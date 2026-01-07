@@ -4,6 +4,7 @@ import Expenses from "./assets/Components/Expenses";
 import { useState, useEffect } from "react";
 import BalanceForm from "./assets/Components/BalanceForm";
 import ExpenseList from "./assets/Components/ExpenseList";
+import Widget from "./assets/Components/Widget";
 
 export default function App() {
 	// Loading State
@@ -54,6 +55,11 @@ export default function App() {
 
 		// Subtract expenses from each period
 		return {
+			weeklyStartAmount: totals.weekly.toFixed(2),
+			biWeeklyStartAmount: totals.biWeekly.toFixed(2),
+			monthlyStartAmount: totals.monthly.toFixed(2),
+			yearlyStartAmount: totals.yearly.toFixed(2),
+
 			weekly: (totals.weekly - totalExpenses).toFixed(2),
 			biWeekly: (totals.biWeekly - totalExpenses).toFixed(2),
 			monthly: (totals.monthly - totalExpenses).toFixed(2),
@@ -189,6 +195,7 @@ export default function App() {
 					editExpenses={editExpenses}
 					deleteExpense={deleteExpense}
 				/>
+				<Widget />
 			</div>
 		</div>
 	);

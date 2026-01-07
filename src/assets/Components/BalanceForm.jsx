@@ -19,20 +19,49 @@ export default function BalanceForm(props) {
 					<div className="income-period">
 						<div className="period-grid">
 							<div className="period-item">
-								<span className="period-label">Weekly</span>
-								<span className="period-amount">${props.results.weekly}</span>
+								<div className="period-header">
+									<span className="period-label">Weekly</span>
+									<span className="period-amount">
+										(${props.results.weekly})
+									</span>
+								</div>
+
+								<span className="period-start-amount">
+									(${props.results.weeklyStartAmount})
+								</span>
 							</div>
 							<div className="period-item">
-								<span className="period-label">Bi-Weekly</span>
-								<span className="period-amount">${props.results.biWeekly}</span>
+								<div className="period-header">
+									<span className="period-label">Bi-Weekly</span>
+									<span className="period-amount">
+										(${props.results.biWeekly})
+									</span>
+								</div>
+								<span className="period-start-amount">
+									(${props.results.biWeeklyStartAmount})
+								</span>
 							</div>
 							<div className="period-item">
-								<span className="period-label">Monthly</span>
-								<span className="period-amount">${props.results.monthly}</span>
+								<div className="period-header">
+									<span className="period-label">Monthly</span>
+									<span className="period-amount">
+										(${props.results.monthly}){" "}
+									</span>
+								</div>
+								<span className="period-start-amount">
+									(${props.results.monthlyStartAmount})
+								</span>
 							</div>
 							<div className="period-item">
-								<span className="period-label">Yearly</span>
-								<span className="period-amount">${props.results.yearly}</span>
+								<div className="period-header">
+									<span className="period-label">Yearly</span>
+									<span className="period-amount">
+										(${props.results.yearly})
+									</span>
+								</div>
+								<span className="period-start-amount">
+									(${props.results.yearlyStartAmount})
+								</span>
 							</div>
 						</div>
 					</div>

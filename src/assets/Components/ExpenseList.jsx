@@ -105,14 +105,17 @@ export default function ExpenseList(props) {
 							) : (
 								// NORMAL MODE
 								<div className="expenseInformation">
-									<div className="nameInformation">{expense.name}</div>
-									<div className="costInformation">${expense.cost}</div>
+									<div className="top-row">
+										<div className="nameInformation">{expense.name}</div>
+										<div className="costInformation">${expense.cost}</div>
+									</div>
+
 									<div className="expenseButtons">
 										<button onClick={() => editing(originalIndex, expense)}>
-											Edit
+											✏️
 										</button>
 										<button onClick={() => props.deleteExpense(originalIndex)}>
-											Delete
+											✖️
 										</button>
 									</div>
 								</div>
