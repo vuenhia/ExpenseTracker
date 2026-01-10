@@ -8,6 +8,8 @@ export default function ExpenseList(props) {
 		cost: "",
 	});
 
+	const [open, setOpen] = useState(false);
+
 	// Filtered groups
 	const needsExpense = props.expenses.filter(
 		(expense) => expense.category === "Needs"

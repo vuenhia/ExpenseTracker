@@ -1,5 +1,5 @@
 export default function BalanceForm(props) {
-	const hasIncome = props.results.monthly > 0;
+	const hasIncome = Number(props.results.yearlyStartAmount) > 0;
 
 	return (
 		<div className="balance-container">
@@ -66,7 +66,7 @@ export default function BalanceForm(props) {
 						</div>
 					</div>
 					<div className="budget-section">
-						<h2>Suggested Budget Breakdown</h2>
+						<h2>Suggested Budget Breakdown (Based Monthly)</h2>
 						<div className="budget-breakdown">
 							<div className="budget-card needs">
 								<div className="card-header">

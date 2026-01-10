@@ -22,8 +22,32 @@ export default function App() {
 	const [name, setName] = useState("");
 	const [cost, setCost] = useState("");
 
+	// Weekly / Bi-Weekly / Monthly / Yearly Calculation
+	const [payPeriod, setPayPeriod] = useState("weekly");
+
 	const calculate = () => {
 		let totals = {};
+		// Calculate total expenses
+		//Pay period conversion
+		const convertExpense = (cost, expenseFrequency) => {
+			if (payPeriod === "weekly") {
+				if (expenseFrequency === "monthly") return cost / 4.33;
+				if (expenseFrequency === "biWeekly") return cost / 2;
+				return cost;
+			}
+
+			if (payPeriod === "biWeekly") {
+				if (expenseFrequency === "monthly") return cost / 2.165;
+				if (expenseFrequency === "weekly") return cost * 2;
+				return cost;
+			}
+
+			return cost;
+		};
+		const totalExpenses = expenses.reduce((sum, expense) => {
+			const cost = parseFloat(expense.cost) || 0;
+			return sum + convertExpense(cost, expense.expenseFrequency);
+		}, 0);
 
 		if (mode === "hourly") {
 			const weekly = parseFloat(hourlyRate * hours) || 0;
@@ -48,11 +72,6 @@ export default function App() {
 			savings: (totals.monthly * 0.2).toFixed(2),
 		};
 
-		// Calculate total expenses
-		const totalExpenses = expenses.reduce((sum, expense) => {
-			return sum + (parseFloat(expense.cost) || 0);
-		}, 0);
-
 		// Subtract expenses from each period
 		return {
 			weeklyStartAmount: totals.weekly.toFixed(2),
@@ -64,6 +83,7 @@ export default function App() {
 			biWeekly: (totals.biWeekly - totalExpenses).toFixed(2),
 			monthly: (totals.monthly - totalExpenses).toFixed(2),
 			yearly: (totals.yearly - totalExpenses).toFixed(2),
+
 			breakdown: breakdown,
 		};
 	};
@@ -177,6 +197,8 @@ export default function App() {
 						salary={salary}
 						setSalary={setSalary}
 						results={results}
+						payPeriod={payPeriod}
+						setPayPeriod={setPayPeriod}
 					/>
 					<Expenses
 						expenses={expenses}
@@ -195,7 +217,7 @@ export default function App() {
 					editExpenses={editExpenses}
 					deleteExpense={deleteExpense}
 				/>
-				<Widget />
+				<Widget results={results} />
 			</div>
 		</div>
 	);
