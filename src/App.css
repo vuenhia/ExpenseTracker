@@ -40,6 +40,25 @@
 	margin-bottom: 20px;
 	flex-shrink: 0;
 }
+.category-header {
+	display: flex;
+	padding-left: 15%;
+	justify-content: center;
+}
+.expense-ul {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+}
+.expense-ul.open {
+	max-height: 500px;
+	transition: max-height 0.5s ease-in;
+}
+.expense-ul.closed {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+}
 .expense-list-header {
 	display: flex;
 	justify-content: space-between;

@@ -2,13 +2,18 @@ import { useState } from "react";
 
 export default function ExpenseList(props) {
 	const [selectedIndexToEdit, setSelectedIndexToEdit] = useState(null);
+
 	const [editForm, setEditForm] = useState({
 		category: "",
 		name: "",
 		cost: "",
 	});
 
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState({
+		Needs: true,
+		Wants: true,
+		Savings: true,
+	});
 
 	// Filtered groups
 	const needsExpense = props.expenses.filter(
@@ -46,8 +51,14 @@ export default function ExpenseList(props) {
 	};
 	const renderList = (title, list, total) => (
 		<div className={`expense-card ${title}`}>
-			<h2>{title}</h2>
-			<ul>
+			<h2
+				className="category-header"
+				onClick={() => setOpen({ ...open, [title]: !open[title] })}
+			>
+				{title} {open[title] ? "▾" : "▸"}
+			</h2>
+
+			<ul className={`expense-ul ${open[title] ? "open" : "closed"}`}>
 				{list.map((expense) => {
 					const originalIndex = props.expenses.indexOf(expense);
 					return (
