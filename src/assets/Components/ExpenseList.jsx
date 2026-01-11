@@ -65,56 +65,67 @@ export default function ExpenseList(props) {
 						<li key={originalIndex}>
 							{selectedIndexToEdit === originalIndex ? (
 								// EDIT MODE
-								<div className="editExpenseForm">
-									<div className="edit-card">
-										<div className="userExpenseCategory">
-											<select
-												value={editForm.category}
-												onChange={(e) =>
-													setEditForm({ ...editForm, category: e.target.value })
-												}
-											>
-												<option value="Needs">Needs</option>
-												<option value="Wants">Wants</option>
-												<option value="Savings">Savings</option>
-											</select>
-										</div>
+								<form
+									onSubmit={(e) => {
+										e.preventDefault();
+										saveEdit(originalIndex);
+									}}
+								>
+									<div className="editExpenseForm">
+										<div className="edit-card">
+											<div className="userExpenseCategory">
+												<select
+													value={editForm.category}
+													onChange={(e) =>
+														setEditForm({
+															...editForm,
+															category: e.target.value,
+														})
+													}
+												>
+													<option value="Needs">Needs</option>
+													<option value="Wants">Wants</option>
+													<option value="Savings">Savings</option>
+												</select>
+											</div>
 
-										<div className="userExpenseName">
-											<input
-												type="text"
-												value={editForm.name}
-												onChange={(e) =>
-													setEditForm({ ...editForm, name: e.target.value })
-												}
-												placeholder="Name"
-											/>
-										</div>
+											<div className="userExpenseName">
+												<input
+													type="text"
+													value={editForm.name}
+													onChange={(e) =>
+														setEditForm({ ...editForm, name: e.target.value })
+													}
+													placeholder="Name"
+												/>
+											</div>
 
-										<div className="userExpenseCost">
-											<input
-												type="number"
-												value={editForm.cost}
-												onChange={(e) =>
-													setEditForm({ ...editForm, cost: e.target.value })
-												}
-												placeholder="Cost"
-											/>
-										</div>
+											<div className="userExpenseCost">
+												<input
+													type="number"
+													value={editForm.cost}
+													onChange={(e) =>
+														setEditForm({ ...editForm, cost: e.target.value })
+													}
+													placeholder="Cost"
+												/>
+											</div>
 
-										<div className="edit-button">
-											<button
-												className="save-button"
-												onClick={() => saveEdit(originalIndex)}
-											>
-												✓ Save
-											</button>
-											<button className="cancel-button" onClick={cancelEdit}>
-												✗ Cancel
-											</button>
+											<div className="edit-button">
+												<button
+													className="save-button"
+													type="submit"
+													onClick={() => saveEdit(originalIndex)}
+												>
+													✓ Save
+												</button>
+												<button className="cancel-button" onClick={cancelEdit}>
+													✗ Cancel
+												</button>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							) : (
 								// NORMAL MODE
 								<div className="expenseInformation">

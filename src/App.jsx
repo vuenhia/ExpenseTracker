@@ -27,26 +27,10 @@ export default function App() {
 
 	const calculate = () => {
 		let totals = {};
-		// Calculate total expenses
-		//Pay period conversion
-		const convertExpense = (cost, expenseFrequency) => {
-			if (payPeriod === "weekly") {
-				if (expenseFrequency === "monthly") return cost / 4.33;
-				if (expenseFrequency === "biWeekly") return cost / 2;
-				return cost;
-			}
 
-			if (payPeriod === "biWeekly") {
-				if (expenseFrequency === "monthly") return cost / 2.165;
-				if (expenseFrequency === "weekly") return cost * 2;
-				return cost;
-			}
-
-			return cost;
-		};
 		const totalExpenses = expenses.reduce((sum, expense) => {
 			const cost = parseFloat(expense.cost) || 0;
-			return sum + convertExpense(cost, expense.expenseFrequency);
+			return sum + cost;
 		}, 0);
 
 		if (mode === "hourly") {
@@ -82,7 +66,7 @@ export default function App() {
 			weekly: (totals.weekly - totalExpenses).toFixed(2),
 			biWeekly: (totals.biWeekly - totalExpenses).toFixed(2),
 			monthly: (totals.monthly - totalExpenses).toFixed(2),
-			yearly: (totals.yearly - totalExpenses).toFixed(2),
+			yearly: (totals.yearly - totalExpenses * 12).toFixed(2),
 
 			breakdown: breakdown,
 		};
@@ -217,7 +201,7 @@ export default function App() {
 					editExpenses={editExpenses}
 					deleteExpense={deleteExpense}
 				/>
-				<Widget results={results} />
+				<Widget results={results} expenses={expenses} />
 			</div>
 		</div>
 	);

@@ -580,6 +580,7 @@ ul {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
+	padding: 8px 0;
 	font-size: 20px;
 }
 .negative {
@@ -589,6 +590,10 @@ ul {
 .positive {
 	color: #48bb78;
 	font-weight: 600;
+	text-align: right;
+}
+.widget-expense-information-breakdown {
+	padding-left: 20px;
 }
 /* Semantics */
 body {
