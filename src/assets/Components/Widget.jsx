@@ -43,7 +43,7 @@ export default function Widget({ results, expenses }) {
 					<div className="widget-row">
 						<span>Yearly Leftovers:</span>
 						<span className={results.yearly < 0 ? "negative" : "positive"}>
-							(${results.yearly})
+							({results.yearlyStartAmount}) (${results.yearly})
 						</span>
 					</div>
 					<div className="widget-expense-information-breakdown">
