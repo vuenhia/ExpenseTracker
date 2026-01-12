@@ -1,13 +1,43 @@
-# React + Vite
+Expense Tracker - Budgeting App 
+A budgeting tool built with React. This app helps users track expenses, categorize spending, calculate leftovers, and gives users a suggested savings amount suiting their pay rate.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features 
+- Shows weekly, bi-weekly, monthly, and yearly incomes
+- Calculates
+    - Total expenses
+    - Leftover balances
+    - Monthly leftovers
+    - Yearly leftovers
+    - Annualized expense calculations for the year
 
-Currently, two official plugins are available:
+Expense Management
+Inlcudes
+  - Add, edit, and delete expenses
+  - Categories: Needs, Wants, Savings
+  - Clean layout
+  - Dropdown category selection to prevent invalid input
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+What I learned 
+State management: 
+  -  Handling complex state for expenses and categories
+  -  Conditional renderings
+Layout and Responsive Design
+  -  Solving nested flexbox issues
+  -  CSS grid for stable layouts
+  -  Ease of use, allowing easy tabs through the web application
+Debugging
+  -  Fixing parent/child height conflicts that caused overflow
+  -  CSS transitions
 
-## Expanding the ESLint configuration
+Tech Stack
+  -  React
+  -  CSS grid and Flexbox
+  -  Vite
+    
+FUTURE IMPROVEMENTS
+  -  Add localStorage 
+  -  History of expenses/income
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# ExpenseTracker
+Why I Built This 
+I needed a simple but nice-looking budget app that I can use to budget my expenses.
+I felt like this would be a good challenge, rather than going online and using a budget app.
