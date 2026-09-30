@@ -1,5 +1,5 @@
 import SalaryInput from "./assets/Components/SalaryInput";
-import "./app.css";
+import "./App.css";
 import Expenses from "./assets/Components/Expenses";
 import { useState, useEffect } from "react";
 import BalanceForm from "./assets/Components/BalanceForm";
@@ -86,12 +86,11 @@ export default function App() {
 		});
 		setExpenses(newExpenses);
 	};
-
-	const loadData = async () => {
+	const loadData = () => {
 		try {
-			const result = await window.storage.get("budget-data");
+			const result = localStorage.getItem("budget-data");
 			if (result) {
-				const data = JSON.parse(result.value);
+				const data = JSON.parse(result);
 				setMode(data.mode || "hourly");
 				setHourlyRate(data.hourlyRate || "");
 				setHours(data.hours || "");
@@ -107,57 +106,57 @@ export default function App() {
 		}
 	};
 
-	// const saveData = async () => {
-	// 	try {
-	// 		const data = {
-	// 			mode,
-	// 			hourlyRate,
-	// 			hours,
-	// 			salary,
-	// 			expenses,
-	// 		};
-	// 		await window.storage.set("budget-data", JSON.stringify(data));
-	// 		setSaveStatus("✓ Saved");
-	// 		setTimeout(() => setSaveStatus(""), 1000);
-	// 	} catch (error) {
-	// 		console.error("Failed to save data:", error);
-	// 		setSaveStatus("✗ Error Saving");
-	// 	}
-	// };
+	const saveData = () => {
+		try {
+			const data = {
+				mode,
+				hourlyRate,
+				hours,
+				salary,
+				expenses,
+			};
+			localStorage.setItem("budget-data", JSON.stringify(data));
+			setSaveStatus("✓ Saved");
+			setTimeout(() => setSaveStatus(""), 1000);
+		} catch (error) {
+			console.error("Failed to save data:", error);
+			setSaveStatus("✗ Error Saving");
+		}
+	};
 
-	// const clearAllData = async () => {
-	// 	if (
-	// 		window.confirm(
-	// 			"Are you sure you want to clear all your budget data? This cannot be undone."
-	// 		)
-	// 	) {
-	// 		try {
-	// 			await window.storage.delete("budget-data");
-	// 			setMode("hourly");
-	// 			setHourlyRate("");
-	// 			setHours("");
-	// 			setSalary("");
-	// 			setExpenses([]);
-	// 			setCategory("");
-	// 			setName("");
-	// 			setCost("");
-	// 			setSaveStatus("✓ All data cleared");
-	// 			setTimeout(() => setSaveStatus(""), 2000);
-	// 		} catch (error) {
-	// 			console.error("Failed to clear data:", error);
-	// 		}
-	// 	}
-	// };
+	const clearAllData = () => {
+		if (
+			window.confirm(
+				"Are you sure you want to clear all your budget data? This cannot be undone.",
+			)
+		) {
+			try {
+				localStorage.removeItem("budget-data");
+				setMode("hourly");
+				setHourlyRate("");
+				setHours("");
+				setSalary("");
+				setExpenses([]);
+				setCategory("");
+				setName("");
+				setCost("");
+				setSaveStatus("✓ All data cleared");
+				setTimeout(() => setSaveStatus(""), 2000);
+			} catch (error) {
+				console.error("Failed to clear data:", error);
+			}
+		}
+	};
 
-	// useEffect(() => {
-	// 	loadData();
-	// }, []);
+	useEffect(() => {
+		loadData();
+	}, []);
 
-	// useEffect(() => {
-	// 	if (!isLoading) {
-	// 		saveData();
-	// 	}
-	// }, [mode, hourlyRate, hours, salary, expenses, isLoading]);
+	useEffect(() => {
+		if (!isLoading) {
+			saveData();
+		}
+	}, [mode, hourlyRate, hours, salary, expenses, isLoading]);
 
 	const results = calculate();
 
