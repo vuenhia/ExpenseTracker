@@ -307,7 +307,10 @@
 	transform: translateY(-2px);
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 	background: #4a4d6e;
-	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease,
+		background 0.2s ease;
 }
 .expenseButtons button {
 	background: transparent;
@@ -317,7 +320,9 @@
 	border-radius: 6px;
 	margin-left: 8px;
 	cursor: pointer;
-	transition: background 0.2s ease, border-color 0.2s ease;
+	transition:
+		background 0.2s ease,
+		border-color 0.2s ease;
 }
 
 .expenseButtons button:hover {
@@ -533,7 +538,10 @@ ul {
 	transform: translateY(-2px);
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 	background: #4a4d6e;
-	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease,
+		background 0.2s ease;
 }
 .widget-container.open {
 	font-size: 20px;
@@ -603,4 +611,177 @@ ul {
 body {
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	min-height: 100vh;
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+
+/* Tablets */
+@media (max-width: 900px) {
+	.container {
+		max-width: 90%;
+	}
+
+	.period-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.expense-category-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.widget-container {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.balance-container {
+		height: auto;
+		min-height: 450px;
+	}
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+	.main-section {
+		padding: 10px;
+	}
+
+	.container {
+		max-width: 100%;
+	}
+
+	.app-header {
+		font-size: 20px;
+	}
+
+	.balance-container {
+		padding: 15px;
+		margin: 10px auto;
+	}
+
+	.section-header {
+		font-size: 20px;
+	}
+
+	.category-header {
+		padding-left: 0;
+	}
+
+	.period-grid {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.period-item {
+		padding: 15px;
+		height: auto;
+		min-height: 60px;
+	}
+
+	.period-label,
+	.period-amount {
+		font-size: 20px;
+	}
+
+	.budget-breakdown {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.income-expenses {
+		grid-template-columns: 1fr;
+	}
+
+	.salary-inputs,
+	.expenses-container {
+		padding: 18px;
+	}
+
+	.expense-list {
+		padding: 12px;
+	}
+
+	.expense-list-header {
+		flex-direction: column;
+		gap: 10px;
+		align-items: stretch;
+	}
+
+	.expense-category-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.list {
+		grid-template-columns: 1fr;
+	}
+
+	.expense-card {
+		min-width: 0;
+		max-width: 100%;
+		padding: 15px;
+	}
+
+	.expense-card h2 {
+		font-size: 36px;
+	}
+
+	.categoryInformation,
+	.costInformation {
+		font-size: 22px;
+	}
+
+	.category-total {
+		font-size: 24px;
+	}
+
+	.nameInformation {
+		font-size: 24px;
+	}
+
+	.expenseButtons {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.expenseButtons button {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.editExpenseForm {
+		margin: 10px 0;
+		padding: 15px;
+	}
+
+	.edit-button {
+		flex-direction: column;
+	}
+
+	.save-button,
+	.cancel-button {
+		width: 100%;
+	}
+
+	.widget-container,
+	.widget-container.open,
+	.widget-collapsed,
+	.widget-expanded {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.widget-expanded {
+		padding: 15px;
+	}
+
+	.widget-row {
+		font-size: 17px;
+		gap: 10px;
+	}
+
+	.widget-label {
+		font-size: 20px;
+	}
 }
